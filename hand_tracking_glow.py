@@ -31,7 +31,7 @@ while True:
     imgRGB = cv2.cvtColor(img, cv2.COLOR_BGR2RGB)
     results = hands.process(imgRGB)
 
-    all_hands = []  # ✅ ALWAYS define
+    all_hands = []  # ALWAYS define
 
     if results.multi_hand_landmarks:
         h, w, _ = img.shape
@@ -49,7 +49,7 @@ while True:
             all_hands.append(hand_points)
             mpDraw.draw_landmarks(img, handLms, mpHands.HAND_CONNECTIONS)
 
-    # 🔥 Draw glowing lines ONLY if 2 hands detected
+    #  Draw glowing lines ONLY if 2 hands detected
     if len(all_hands) == 2:
         hand1, hand2 = all_hands
 
@@ -57,7 +57,7 @@ while True:
             x1, y1 = hand1[i]
             x2, y2 = hand2[i]
 
-            # 🔥 Glow effect
+            #  Glow effect
             for thickness in range(20, 0, -5):
                 overlay = img.copy()
                 cv2.line(overlay, (x1, y1), (x2, y2), (255, 0, 255), thickness)
